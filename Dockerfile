@@ -21,7 +21,7 @@ RUN	git clone $GIT_COIN_URL $GIT_COIN_NAME \
 && chmod +x autogen.sh \
 && chmod +x share/genbuild.sh \
 && chmod +x src/leveldb/build_detect_platform \
-&& ./autogen.sh && ./configure --disable-shared --disable-tests --disable-bench --without-gui LIBS="-lcap -lseccomp" \
+&& ./autogen.sh && ./configure --disable-shared --disable-tests --disable-bench --without-gui \
 && make \
 && make install \
 && cd / && rm -rf /$GIT_COIN_NAME \
