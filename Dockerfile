@@ -4,7 +4,7 @@ RUN apt-get update \
 && apt-get -y upgrade \
 && export DEBIAN_FRONTEND=noninteractive \
 && apt-get -y install libboost-all-dev libdb4.8 libdb4.8++ libssl-dev unzip \
-libevent libevent-pthreads software-properties-common \
+libevent-dev software-properties-common \
 git build-essential libtool autotools-dev automake pkg-config bsdmainutils python3 \
 libcap-dev libseccomp-dev zlib1g-dev wget libzmq3-dev libminiupnpc-dev \
 && add-apt-repository ppa:bitcoin/bitcoin \
