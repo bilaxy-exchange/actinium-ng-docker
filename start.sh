@@ -25,7 +25,7 @@ then
     cp $config $datadir/$configfile
 else
     touch $datadir/$configfile
-    /gen_config.sh > $datadir/$configfile
+    /genconf.sh > $datadir/$configfile
 fi
 
 echo "Starting $ticker daemon..."
