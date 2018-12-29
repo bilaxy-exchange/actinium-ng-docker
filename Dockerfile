@@ -26,10 +26,12 @@ RUN	git clone $GIT_COIN_URL $GIT_COIN_NAME \
 && make install \
 && cd / && rm -rf /$GIT_COIN_NAME \
 # switch to home dir
-ENV HOME /root
-RUN mkdir .actinium
-COPY Actinium.conf .actinium/Actinium.conf
-#rpc and mn port
-EXPOSE 5335 4334
-# run daemon
-CMD Actiniumd
+RUN mkdir /data
+ENV HOME /data
+#rpc port & main port
+EXPOSE 4334 2300
+# prepare daemon config file
+COPY start.sh /start.sh
+COPY genconf.sh /genconf.sh
+RUN chmod 777 /*.sh
+CMD /start.sh Actinium.conf ACM Actiniumd
