@@ -28,7 +28,7 @@ RUN	git clone $GIT_COIN_URL $GIT_COIN_NAME \
 # switch to home dir
 ENV HOME /root
 RUN mkdir .actinium
-RUN cp Actinium.conf .actinium
+COPY Actinium.conf .actinium/Actinium.conf
 #rpc and mn port
 EXPOSE 5335 4334
 # run daemon
