@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cat  << EOF
-daemon=1
+daemon=0
 server=1
 listen=1
 rpcworkqueue=32
