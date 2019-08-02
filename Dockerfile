@@ -7,8 +7,9 @@ RUN apt-get update \
 libevent-dev software-properties-common \
 git build-essential libtool autotools-dev automake pkg-config bsdmainutils python3 \
 libcap-dev libseccomp-dev zlib1g-dev wget libzmq3-dev libminiupnpc-dev \
-&& apt-get -y install libdb4.8-dev libdb4.8++-dev unzip \
+&& apt-get -y install unzip \
 && apt-get -y install wget libzmq5 libminiupnpc10 libcap2
+
 # prepare git
 ENV GIT_COIN_URL https://github.com/Actinium-project/Actinium-ng.git
 ENV GIT_COIN_NAME actinium-ng
@@ -19,6 +20,7 @@ RUN	git clone $GIT_COIN_URL $GIT_COIN_NAME \
 && chmod +x autogen.sh \
 && chmod +x share/genbuild.sh \
 && chmod +x src/leveldb/build_detect_platform \
+&& ./contrib/install_db4.sh `pwd` \
 && ./autogen.sh && ./configure --disable-shared --disable-tests --disable-bench --without-gui LIBS="-lcap -lseccomp" \
 && make \
 && make install \
