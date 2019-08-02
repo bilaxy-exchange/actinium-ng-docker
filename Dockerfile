@@ -7,8 +7,6 @@ RUN apt-get update \
 libevent-dev software-properties-common \
 git build-essential libtool autotools-dev automake pkg-config bsdmainutils python3 \
 libcap-dev libseccomp-dev zlib1g-dev wget libzmq3-dev libminiupnpc-dev \
-&& add-apt-repository ppa:bitcoin/bitcoin \
-&& apt-get update \
 && apt-get -y install libdb4.8-dev libdb4.8++-dev unzip \
 && apt-get -y install wget libzmq5 libminiupnpc10 libcap2
 # prepare git
