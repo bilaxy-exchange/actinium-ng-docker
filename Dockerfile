@@ -17,11 +17,13 @@ ENV GIT_COIN_NAME actinium-ng
 RUN	git clone $GIT_COIN_URL $GIT_COIN_NAME \
 && cd $GIT_COIN_NAME \
 && git checkout master \
+&& chmod +x contrib/install_db4.sh \
 && chmod +x autogen.sh \
 && chmod +x share/genbuild.sh \
 && chmod +x src/leveldb/build_detect_platform \
 && ./contrib/install_db4.sh `pwd` \
-&& ./autogen.sh && ./configure --disable-shared --disable-tests --disable-bench --without-gui LIBS="-lcap -lseccomp" \
+&& export BDB_PREFIX=`pwd`/db4 \
+&& ./autogen.sh && ./configure LDFLAGS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" CPPFLAGS="-I${BDB_PREFIX}/include" --disable-shared --disable-tests --disable-bench --without-gui LIBS="-lcap -lseccomp" \
 && make \
 && make install \
 && cd / && rm -rf /$GIT_COIN_NAME \
