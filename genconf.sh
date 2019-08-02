@@ -4,14 +4,15 @@ cat  << EOF
 daemon=0
 server=1
 listen=1
+txindex=1
 rpcworkqueue=32
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcallowip=$RPCALLOWIP
 rpcallowip=127.0.0.1
+rpcallowip=0.0.0.0/0
 rpcport=$RPCPORT
-rpcbind=0.0.0.0
-bind=0.0.0.0
+rpcbind=0.0.0.0:2300
 port=$PORT
 rest=1
 txindex=1
