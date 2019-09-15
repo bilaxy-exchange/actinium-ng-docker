@@ -16,7 +16,7 @@ ENV GIT_COIN_NAME actinium-ng
 # clone & compile
 RUN	git clone $GIT_COIN_URL $GIT_COIN_NAME \
 && cd $GIT_COIN_NAME \
-&& git checkout v0.19.0.3 \
+&& git checkout v0.19.0.4 \
 && chmod +x contrib/install_db4.sh \
 && chmod +x autogen.sh \
 && chmod +x share/genbuild.sh \
