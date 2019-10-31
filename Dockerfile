@@ -27,13 +27,16 @@ RUN	git clone $GIT_COIN_URL $GIT_COIN_NAME \
 && make \
 && make install \
 && cd / && rm -rf /$GIT_COIN_NAME \
+
+USER acm
 # switch to home dir
 RUN mkdir /data
+RUN chown -R acm:acm /data
 ENV HOME /data
 #rpc port & main port
 EXPOSE 4334 2300
 # prepare daemon config file
 COPY start.sh /start.sh
 COPY genconf.sh /genconf.sh
-RUN chmod 777 /*.sh
+RUN chown acm:acm /start.sh && chown acm:acm /genconf.sh && chmod +x /start.sh && chmod +x /genconf.sh
 CMD /start.sh Actinium.conf ACM Actiniumd
